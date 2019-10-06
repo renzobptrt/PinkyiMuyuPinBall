@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {   
+
         //Buscar objeto que tiene la musica
         //theAM = FindObjectOfType<MusicManager>();
     }
