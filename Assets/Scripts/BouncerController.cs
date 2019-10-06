@@ -15,9 +15,9 @@ public class BouncerController : MonoBehaviour
     void Update()
     {   
         //Destruir un objeto luego de tres golpes
-        if(golpes==3){
+        /*if(golpes==3){
             Destroy(this.gameObject);
-        }
+        }*/
     }
 
     void OnCollisionEnter2D(Collision2D col){
