@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
     public void CatchPlayer(){
         speedContenida = this.GetVelocity();
         rb2d.bodyType = RigidbodyType2D.Static;
-        Invoke("SetVelocityContenida",4);
+        Invoke("SetVelocityContenida",2);
     }
 
     

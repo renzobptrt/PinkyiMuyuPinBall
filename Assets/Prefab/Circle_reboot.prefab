@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 8840119129403537548}
   - component: {fileID: 6345611064923722218}
   - component: {fileID: 1206755343}
-  - component: {fileID: 520112681}
-  - component: {fileID: 1572188831}
   m_Layer: 0
   m_Name: Circle_reboot
   m_TagString: Untagged
@@ -30,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 253077156098707738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.41, y: 3.02, z: 0}
-  m_LocalScale: {x: 0.1152126, y: 0.09615641, z: 1}
+  m_LocalScale: {x: -0.10487554, y: 0.094626054, z: 0.9840847}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,38 +98,6 @@ MonoBehaviour:
   puntaje: 10
   intensidad: 3
 --- !u!58 &1206755343
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253077156098707738}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00000038557826, y: 0.11525152}
-  serializedVersion: 2
-  m_Radius: 2.4391944
---- !u!58 &520112681
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253077156098707738}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00000038557826, y: 0.11525152}
-  serializedVersion: 2
-  m_Radius: 2.4391944
---- !u!58 &1572188831
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
