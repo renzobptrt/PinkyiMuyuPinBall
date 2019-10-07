@@ -25,7 +25,7 @@ public class ViewInGame : MonoBehaviour
         //if(GameManager.sharedInstance.gameState == GameState.inGame){
             if(scoreText!=null || maxScoreText!=null ||scoreInitText!=null){
                 int scoreInit = GameManager.sharedInstance.GetPoints();
-                Debug.Log(scoreInit);
+                //Debug.Log(scoreInit);
                 this.scoreInitText.text = scoreInit.ToString();
                 int score = PlayerPrefs.GetInt("Score",0);
                 this.scoreText.text = score.ToString();

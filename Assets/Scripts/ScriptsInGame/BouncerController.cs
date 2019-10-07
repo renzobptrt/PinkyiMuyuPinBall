@@ -6,6 +6,8 @@ public class BouncerController : MonoBehaviour
 {   
     private int golpes = 0;
     public int puntaje=0;
+    public int intensidad=0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +25,22 @@ public class BouncerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag == "Player"){
-            col.gameObject.SendMessage("BouncingObject", transform.position.x);
+            PlayerController.sharedInstance.BouncingObject(transform.position.x,intensidad);
             GameManager.sharedInstance.AddPoints(puntaje);
             golpes ++ ;
         }
+    }
 
+    void OnTriggerExit2D(Collider2D col){ 
+        if(col.gameObject.tag == "Player"){
+            this.GetComponent<EdgeCollider2D>().isTrigger = false;
+            Debug.Log("Dandole collider");
+        }
+    }
+    void OnTriggerEnter2D(Collider2D col){ 
+        if(col.gameObject.tag == "Player"){
+            this.GetComponent<EdgeCollider2D>().isTrigger = true;
+            Debug.Log("Quitando collider");
+        }
     }
 }

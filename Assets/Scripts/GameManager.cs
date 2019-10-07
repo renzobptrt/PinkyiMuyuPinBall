@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     //Aumento de puntaje
     public void AddPoints(int puntaje){
         contadorPuntos += puntaje;
-        Debug.Log("Puntaje actual: "+ contadorPuntos);
+        //Debug.Log("Puntaje actual: "+ contadorPuntos);
     }
 
     public int GetPoints(){

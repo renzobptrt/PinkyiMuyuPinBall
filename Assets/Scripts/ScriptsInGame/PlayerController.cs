@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     //Caracteristicas
     private float speed;
+    private bool isDead;
 
     //Contadores
     private int contadorInterruptor;
@@ -44,11 +45,12 @@ public class PlayerController : MonoBehaviour
     private void BornPlayer(){
         //Inicializamos parametros cada vez que reiniciamos
         this.transform.position = startPosition;
+        this.isDead = false;
     }
 
-    public void BouncingObject(float bouncerPosX){
+    public void BouncingObject(float bouncerPosX, int bouncerIntense){
         float side = Mathf.Sign(bouncerPosX - this.transform.position.x);
-        rb2d.AddForce(Vector2.left*side*10,ForceMode2D.Impulse);
+        rb2d.AddForce(Vector2.left*side*bouncerIntense,ForceMode2D.Impulse);
     }
 
     //Funcion para trasladar un objeto de un punto a otro
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     public void DeadPlayer(){
         numeroMuertes++;
+        this.isDead = true;
         if(numeroMuertes==3){
             numeroMuertes = 0;
 
@@ -92,6 +95,10 @@ public class PlayerController : MonoBehaviour
             BornPlayer();
         }
         //Invoke("KillPlayer", 1.2f);
+    }
+
+    public bool GetIsDead(){
+        return this.isDead;
     }
     
     
