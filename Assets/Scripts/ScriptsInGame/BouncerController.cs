@@ -5,6 +5,7 @@ using UnityEngine;
 public class BouncerController : MonoBehaviour
 {   
     private int golpes = 0;
+    public int puntaje=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class BouncerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag == "Player"){
             col.gameObject.SendMessage("BouncingObject", transform.position.x);
+            GameManager.sharedInstance.AddPoints(puntaje);
             golpes ++ ;
         }
 

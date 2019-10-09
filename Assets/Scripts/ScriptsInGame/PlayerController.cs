@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {   
-    private float speed;
+    //Patron Singleton
+    public static PlayerController sharedInstance;
+    //Componentes
     private Rigidbody2D rb2d;
-    private int contadorInterruptor = 0;
+    private Vector3 startPosition;
 
+    //Caracteristicas
+    private float speed;
+
+    //Contadores
+    private int contadorInterruptor;
+    private int numeroMuertes;
 
     void Awake(){
         rb2d = GetComponent<Rigidbody2D>();
+        sharedInstance = this;
+        startPosition = this.transform.position;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        numeroMuertes = 0;
     }
 
     // Update is called once per frame
@@ -29,6 +39,11 @@ public class PlayerController : MonoBehaviour
             //Modo lunatico
             //rb2d.velocity = new Vector3((float)rb2d.velocity.x*1.01f,(float)rb2d.velocity.y*1.01f,1);
             //Debug.Log(rb2d.velocity.x);
+    }
+
+    private void BornPlayer(){
+        //Inicializamos parametros cada vez que reiniciamos
+        this.transform.position = startPosition;
     }
 
     public void BouncingObject(float bouncerPosX){
@@ -54,6 +69,29 @@ public class PlayerController : MonoBehaviour
             }
         }
         Debug.Log("Aumentamos el contador a :"+  contadorInterruptor);
+    }
+
+    public void DeadPlayer(){
+        numeroMuertes++;
+        if(numeroMuertes==3){
+            numeroMuertes = 0;
+
+            //Creamos las variables que guardan historial de puntos aun asi se apage el juego
+            int maxScore = PlayerPrefs.GetInt("maxScore", 0);
+            int score = PlayerPrefs.GetInt("Score",0);
+            int points = GameManager.sharedInstance.GetPoints();
+
+            //Asiganamos los valores a las variables
+            PlayerPrefs.SetInt("Score",points);
+            if(maxScore < points ){
+                PlayerPrefs.SetInt("maxScore",points);
+            }
+            GameManager.sharedInstance.ChangeScene("GameOverScene");
+        }else{
+            Debug.Log("Nace jugador");
+            BornPlayer();
+        }
+        //Invoke("KillPlayer", 1.2f);
     }
     
     

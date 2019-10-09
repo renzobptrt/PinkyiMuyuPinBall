@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     //Variable para saber en que estado del juego nos encontramos
     public GameState gameState = GameState.inMenu;
 
+    //Variables del juego
+    private int contadorPuntos=0;
 
     private string escena;
 
@@ -52,59 +54,27 @@ public class GameManager : MonoBehaviour
         }*/
     }
 
+
+
     public void ChangeScene(string nombre){
         SceneManager.LoadScene(nombre);
     }
     public void ExitGame(){
+        PlayerPrefs.SetInt("Score",0);
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif    
     }
-    /* 
-    void setGameState(GameState newGameState)
-    {   
-        
-        if (newGameState == GameState.inGame)
-        {
-            //Se prepara la escena para jugar 
-            escena = "GameScene";
-            
-
-            /* 
-            //Musica
-            if(inGameTrack!=null){
-                //theAM.ChangeBGM(inGameTrack);
-                MusicManager.sharedInstance.ChangeBGM(inGameTrack);
-            }
-
-        }
-        else if (newGameState == GameState.inGameOver)
-        {
-            //Se prepara la escena para GameOver
-            //SceneManager.LoadScene("GameOver");
-            //escena = "GameOverScene";
-
-            /* 
-            //Musica
-            if(inMenuTrack!=null){
-                //theAM.ChangeBGM(inMenuTrack);
-                MusicManager.sharedInstance.ChangeBGM(inMenuTrack);
-            }
-
-        }
-        if (newGameState == GameState.inMenu)
-        {   
-            //Se prepara la escena para el Menu
-            escena = "MenuScene";
-        }
+    
+    //Aumento de puntaje
+    public void AddPoints(int puntaje){
+        contadorPuntos += puntaje;
+        Debug.Log("Puntaje actual: "+ contadorPuntos);
     }
-    */
-    /* 
-    public void CollectCoins(int coinValue){
-        this.collectedCoin += coinValue;
 
-        Debug.Log("Llevamos recogidos: "+ this.collectedCoin); 
-    }*/
+    public int GetPoints(){
+        return this.contadorPuntos;
+    }
 }
