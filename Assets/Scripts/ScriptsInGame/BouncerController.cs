@@ -31,16 +31,17 @@ public class BouncerController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D col){ 
+    /*void OnTriggerExit2D(Collider2D col){ 
         if(col.gameObject.tag == "Player"){
             this.GetComponent<EdgeCollider2D>().isTrigger = false;
             Debug.Log("Dandole collider");
         }
-    }
-    void OnTriggerEnter2D(Collider2D col){ 
-        if(col.gameObject.tag == "Player"){
-            this.GetComponent<EdgeCollider2D>().isTrigger = true;
-            Debug.Log("Quitando collider");
+    }*/
+    void OnTriggerStay2D(Collider2D col){ 
+        if(col.gameObject.tag == "Player" && this.tag == "Catcher"){
+            PlayerController.sharedInstance.CatchPlayer();
+            Debug.Log("Atrape al jugador");
         }
     }
+
 }

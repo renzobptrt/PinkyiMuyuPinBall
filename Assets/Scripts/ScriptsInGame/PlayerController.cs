@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     //Caracteristicas
     private float speed;
     private bool isDead;
+    private Vector3 speedContenida = new Vector3();
 
     //Contadores
     private int contadorInterruptor;
@@ -100,6 +101,26 @@ public class PlayerController : MonoBehaviour
     public bool GetIsDead(){
         return this.isDead;
     }
-    
+
+    public Vector3 GetVelocity(){
+        Vector3 velocidad = new Vector3();
+        velocidad = rb2d.velocity;
+        return velocidad;
+    }
+
+    public void SetVelocityContenida(){
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
+        this.rb2d.velocity = new Vector3(speedContenida.x,speedContenida.y,speedContenida.z);
+        float side = Mathf.Sign( 0.0f - this.transform.position.x);
+        rb2d.AddForce(Vector2.right*-1*10,ForceMode2D.Impulse);
+        Debug.Log("Expulsando pelota");
+    }
+
+    public void CatchPlayer(){
+        speedContenida = this.GetVelocity();
+        rb2d.bodyType = RigidbodyType2D.Static;
+        Invoke("SetVelocityContenida",4);
+    }
+
     
 }   
