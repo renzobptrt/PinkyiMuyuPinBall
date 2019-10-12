@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         float side = Mathf.Sign( 0.0f - this.transform.position.x);
         this.transform.position = new Vector3(transporter.transform.position.x - 0.5f,transporter.transform.position.y,this.transform.position.z);
         Debug.Log("Cambie de posicion al jugador" + this.transform.position.x);
-        rb2d.AddForce(Vector2.left*side*10,ForceMode2D.Impulse);
+        rb2d.AddForce(Vector2.left*side*10,ForceMode2D.Force);
     }
 
     //Contador para activar un evento
